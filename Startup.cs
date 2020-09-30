@@ -40,6 +40,11 @@ namespace ExpanditureApi
             }
 
             //app.UseHttpsRedirection();
+            app.UseCors(x=>x.AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("http://127.0.0.1:5500")
+            .AllowCredentials());
+            
 
             app.UseRouting();
 

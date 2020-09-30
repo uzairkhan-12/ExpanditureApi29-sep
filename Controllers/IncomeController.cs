@@ -3,19 +3,20 @@ using ExpanditureApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExpanditureApi.Controllers {
+
     [ApiController]
-    [Route("[controller]")]    
+    [Route("[controller]")]
     public class IncomeController : ControllerBase {
         private ExpanditureContext context;
         public IncomeController(ExpanditureContext _context) {
             context = _context;
         }
         [HttpPost]
-        [Route("add")]
+        [Route("addIncome")]
         public IActionResult AddIncome([FromBody]Income income) {
             context.Income.Add(income);
             context.SaveChanges();
-            return Ok(context.Income.ToList());
+            return Ok(income);
         }
         [HttpGet]
         [Route("get-all")]
