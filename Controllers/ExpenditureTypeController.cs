@@ -46,5 +46,13 @@ namespace ExpanditureApi29_sep.Controllers
             db.SaveChanges();
             return Ok(true);
         }
+        //idhar aik function bnana ha js men id pas kr k wo data show krana ha jski id pas ki ha
+        [HttpGet]
+        [Route("get-data-by-id")]
+        public IActionResult getDataById(int typeId) {
+            var row = db.ExpenditureTypes.FirstOrDefault(x =>x.Id == typeId);
+            return Ok(row);
+        }
+
     }
 }
