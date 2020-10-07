@@ -53,6 +53,17 @@ namespace ExpanditureApi29_sep.Controllers
             var row = db.ExpenditureTypes.FirstOrDefault(x =>x.Id == typeId);
             return Ok(row);
         }
+        
+        [HttpPost]
+        [Route("update")]
+        public IActionResult Update([FromBody] ExpenditureType expenditureType)
+        {
+            var row=db.ExpenditureTypes.FirstOrDefault(x=>x.Id==expenditureType.Id);
+            if(row==null) return BadRequest("record not found");
+            row.ExpenditureTypeName=expenditureType.ExpenditureTypeName;
+            db.SaveChanges();
+            return Ok(expenditureType);
+        }
 
     }
 }
