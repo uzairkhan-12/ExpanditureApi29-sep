@@ -18,7 +18,7 @@ namespace ExpanditureApi29_sep.Controllers
         var result = context.ExpenditureTypes.Where(x=>x.IsActive==true).Select(s => new
                         {
                             id = s.Id,
-                            value = s.ExpenditureTypeName
+                            name = s.ExpenditureTypeName
                         }).ToList();
     return Ok(result);
     }
