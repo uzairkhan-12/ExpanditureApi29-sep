@@ -64,6 +64,16 @@ namespace ExpanditureApi29_sep.Controllers
             db.SaveChanges();
             return Ok(expenditureType);
         }
-
+        [HttpDelete]
+        [Route("delete")]
+        public IActionResult Delete([FromQuery] int typeId)
+        {
+            var row=db.ExpenditureTypes.FirstOrDefault(x=>x.Id==typeId);
+            if(row==null) return BadRequest("record not found");
+            db.ExpenditureTypes.Remove(row);
+            db.SaveChanges();
+            return Ok(row);
+        }
+        
     }
 }
