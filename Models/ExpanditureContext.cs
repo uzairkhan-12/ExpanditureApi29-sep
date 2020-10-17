@@ -1,4 +1,3 @@
-using ExpanditureApi29_sep.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExpanditureApi.Models {
@@ -6,5 +5,6 @@ namespace ExpanditureApi.Models {
         public ExpanditureContext(DbContextOptions<ExpanditureContext>options) : base(options) { }
         public DbSet<Income> Income {get ; set ;}
         public DbSet<ExpenditureType> ExpenditureTypes {get;set;}
+        public DbSet<Expanditure> Expanditures {get;set;}
     }
 }

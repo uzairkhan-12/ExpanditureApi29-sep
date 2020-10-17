@@ -1,6 +1,6 @@
 using System;
 
-namespace ExpanditureApi29_sep.Models
+namespace ExpanditureApi.Models
 {
     public class ExpenditureType
     {
