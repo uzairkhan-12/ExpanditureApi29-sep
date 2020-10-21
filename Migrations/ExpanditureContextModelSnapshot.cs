@@ -19,22 +19,31 @@ namespace ExpanditureApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ExpanditureApi.Models.Income", b =>
+            modelBuilder.Entity("ExpanditureApi.Models.Expanditure", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("amount")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
-                    b.ToTable("Income");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Expanditures");
                 });
 
-            modelBuilder.Entity("ExpanditureApi29_sep.Models.ExpenditureType", b =>
+            modelBuilder.Entity("ExpanditureApi.Models.ExpenditureType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,6 +62,21 @@ namespace ExpanditureApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExpenditureTypes");
+                });
+
+            modelBuilder.Entity("ExpanditureApi.Models.Income", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("amount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Income");
                 });
 #pragma warning restore 612, 618
         }

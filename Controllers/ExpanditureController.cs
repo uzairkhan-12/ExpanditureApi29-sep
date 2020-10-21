@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using ExpanditureApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,24 @@ namespace ExpanditureApi29_sep.Controllers
                         }).ToList();
     return Ok(result);
     }
-    
+    // validation for add expanditure page
+    //redirect 
+    // dinamic
+    [HttpPost]
+        [Route("epxanditure-with-amount")]
+        public IActionResult Add([FromBody] Expanditure expanditure)
+        {
+            expanditure.CreatedDate = DateTime.Now;
+            expanditure.IsActive = true;
+            context.Expanditures.Add(expanditure);
+            context.SaveChanges();
+            return Ok(expanditure);
+        }
+        [HttpGet]
+        [Route("detail-by-id")]
+        public IActionResult detail(int typeId){
+            var row = context.Expanditures.Where(x=>x.TypeId == typeId).ToList();
+            return Ok(row);
+        }
     }
 }

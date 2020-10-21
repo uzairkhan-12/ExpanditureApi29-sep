@@ -18,5 +18,11 @@ namespace ExpanditureApi29_sep.Controllers
         public IActionResult GetIncome(){
             return Ok(db.Income.Sum(x=>x.amount));
         }
+        [HttpGet]
+        [Route("get-expanditure")]
+        public IActionResult getExpanditure(){
+            return Ok(db.Expanditures.Sum(x=>x.Amount));
+        }
     }
+
 }

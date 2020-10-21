@@ -15,7 +15,8 @@ namespace ExpanditureApi29_sep.Controllers
         {
             db = context;
         }
-
+// controller expanditure
+// 22 expanditure type => expanditure
         [HttpPost]
         [Route("add")]
         public IActionResult Add([FromBody] ExpenditureType expenditureType)
