@@ -32,13 +32,15 @@ namespace ExpanditureApi.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ExpenditureTypeId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
+
+                    b.HasIndex("ExpenditureTypeId");
 
                     b.ToTable("Expanditures");
                 });
@@ -77,6 +79,15 @@ namespace ExpanditureApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Income");
+                });
+
+            modelBuilder.Entity("ExpanditureApi.Models.Expanditure", b =>
+                {
+                    b.HasOne("ExpanditureApi.Models.ExpenditureType", "ExpenditureType")
+                        .WithMany("Expanditures")
+                        .HasForeignKey("ExpenditureTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
